@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #jocarsa_calendario{
+                font-family: sans-serif;
+            }
+            #jocarsa_calendario nav button{
+                font-size:10px;
+                color:white;
+                background:blue;
+                border:0px;
+                padding:10px;
+                margin:3px;
+                border-radius:5px;
+                text-transform: uppercase;
+                min-width:50px;
+            }
+            #jocarsa_calendario .diario div{
+                font-size:10px;
+                padding:5px;
+                border-bottom:1px solid lightgrey;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="jocarsa_calendario"></div>
+        <script>
+            let jocarsa_calendario = document.querySelector("#jocarsa_calendario");
+            let menu = document.createElement("nav")
+            // Boton diario
+            let boton_diario = document.createElement("button")
+            boton_diario.textContent = "Día";
+            menu.appendChild(boton_diario)
+            // Boton semana
+            let boton_semanal = document.createElement("button")
+            boton_semanal.textContent = "Semana";
+            menu.appendChild(boton_semanal)
+            // Boton mes
+            let boton_mensual = document.createElement("button")
+            boton_mensual.textContent = "Mes";
+            menu.appendChild(boton_mensual)
+            // Boton año
+            let boton_anual = document.createElement("button")
+            boton_anual.textContent = "Año";
+            menu.appendChild(boton_anual)
+            jocarsa_calendario.appendChild(menu);
+            let contenedor = document.createElement("div")
+            jocarsa_calendario.appendChild(contenedor);
+            
+            // Acciones
+            boton_diario.onclick = function(){
+                // Vacío el contenedor
+                contenedor.innerHTML = "";
+                contenedor.classList.add("diario")
+                for(let hora = 0;hora<=23;hora++){
+                    let elemento_hora = document.createElement("div")
+                    elemento_hora.textContent = hora+":00h";
+                    contenedor.appendChild(elemento_hora)
+                }
+            }
+            boton_semanal.onclick = function(){
+                contenedor.textContent = "Ponemos la vista de semanal"
+            }
+            boton_mensual.onclick = function(){
+                contenedor.textContent = "Ponemos la vista de mensual"
+            }
+            boton_anual.onclick = function(){
+                contenedor.textContent = "Ponemos la vista de anual"
+            }
+            
+            
+        </script>
+    </body>

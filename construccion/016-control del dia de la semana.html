@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #jocarsa_calendario{
+                font-family: sans-serif;
+            }
+            #jocarsa_calendario nav button{
+                font-size:10px;
+                color:white;
+                background:blue;
+                border:0px;
+                padding:10px;
+                margin:3px;
+                border-radius:5px;
+                text-transform: uppercase;
+                min-width:50px;
+            }
+            #jocarsa_calendario .diario div,
+            #jocarsa_calendario .semanal .dia div
+            {
+                font-size:10px;
+                padding:5px;
+                border-bottom:1px solid lightgrey;
+            }
+            #jocarsa_calendario .semanal{
+                display:flex;
+            }
+            #jocarsa_calendario .semanal>div{
+                min-width:150px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="jocarsa_calendario"></div>
+        <script>
+            // Declaración de variables globales
+            var fecha = new Date();
+            var diames_hoy = fecha.getDate();
+            var diasemana_hoy = fecha.getDay();
+            var mes_hoy = fecha.getMonth()+1;
+            var anio_hoy = fecha.getFullYear();
+            const diasdelasemana = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"]
+            const meses = [
+                'Enero',
+                'Febrero',
+                'Marzo',
+                'Abril',
+                'Mayo',
+                'Junio',
+                'Julio',
+                'Agosto',
+                'Septiembre',
+                'Octubre',
+                'Noviembre',
+                'Diciembre'
+                
+            ]
+            let jocarsa_calendario = document.querySelector("#jocarsa_calendario");
+            let menu = document.createElement("nav")
+            // Boton anterior
+            let boton_anterior = document.createElement("button")
+            boton_anterior.textContent = "<";
+            menu.appendChild(boton_anterior)
+            // Boton posterior
+            let boton_posterior = document.createElement("button")
+            boton_posterior.textContent = ">";
+            menu.appendChild(boton_posterior)
+            // Boton diario
+            let boton_diario = document.createElement("button")
+            boton_diario.textContent = "Día";
+            menu.appendChild(boton_diario)
+            // Boton semana
+            let boton_semanal = document.createElement("button")
+            boton_semanal.textContent = "Semana";
+            menu.appendChild(boton_semanal)
+            // Boton mes
+            let boton_mensual = document.createElement("button")
+            boton_mensual.textContent = "Mes";
+            menu.appendChild(boton_mensual)
+            // Boton año
+            let boton_anual = document.createElement("button")
+            boton_anual.textContent = "Año";
+            menu.appendChild(boton_anual)
+            jocarsa_calendario.appendChild(menu);
+            let contenedor = document.createElement("div")
+            jocarsa_calendario.appendChild(contenedor);
+            
+            
+            // Acciones
+            boton_anterior.onclick = function(){
+                diames_hoy--;           // Primero cambia el dia
+                diasemana_hoy--;
+                controlardiasemana()
+                representaDiario();     // Y ahora actualiza la vista
+            }
+            boton_posterior.onclick = function(){
+                diames_hoy++;           // Primero cambia el dia
+                diasemana_hoy++;
+                controlardiasemana()
+                representaDiario();     // Y ahora actualiza la vista
+            }
+            boton_diario.onclick = function(){
+                representaDiario();
+            }
+            boton_semanal.onclick = function(){
+                
+                contenedor.innerHTML = "";
+                contenedor.classList.value = '';
+                contenedor.classList.add("semanal")
+                for(let dia = 1;dia<=7;dia++){
+                    let elemento_dia = document.createElement("div")
+                    elemento_dia.classList.add("dia")
+                    let cabecera = document.createElement("h4")
+                    cabecera.textContent = diasdelasemana[dia-1]
+                    elemento_dia.appendChild(cabecera)
+                    for(let hora = 0;hora<=23;hora++){
+                        let elemento_hora = document.createElement("div")
+                        elemento_hora.textContent = hora+":00h";
+                        elemento_dia.appendChild(elemento_hora)
+                    }
+                    contenedor.appendChild(elemento_dia)
+                }
+            }
+            boton_mensual.onclick = function(){
+                contenedor.textContent = "Ponemos la vista de mensual"
+            }
+            boton_anual.onclick = function(){
+                contenedor.textContent = "Ponemos la vista de anual"
+            }
+            
+            function representaDiario(){
+                // Vacío el contenedor
+                contenedor.innerHTML = "";
+                contenedor.classList.value = '';
+                contenedor.classList.add("diario")
+                let cabecera = document.createElement("h4")
+                cabecera.textContent = diasdelasemana[diasemana_hoy-1]+", "+diames_hoy+" de "+meses[mes_hoy-1]+" de "+anio_hoy;
+                contenedor.appendChild(cabecera)
+                for(let hora = 0;hora<=23;hora++){
+                    let elemento_hora = document.createElement("div")
+                    elemento_hora.textContent = hora+":00h";
+                    contenedor.appendChild(elemento_hora)
+                }
+            }
+            function controlardiasemana(){
+                if(diasemana_hoy < 1){
+                    diasemana_hoy = 7;
+                }
+                if(diasemana_hoy > 7){
+                    diasemana_hoy = 1;
+                }
+            }
+            
+        </script>
+    </body>

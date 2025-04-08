@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jocarsa_calendario DEMO</title>
+  <!-- Link the CSS library -->
+  <link rel="stylesheet" href="jocarsa_calendario.css" />
+</head>
+<body>
+
+  <h1>Demo of jocarsa_calendario</h1>
+
+  <!-- The container where the calendar will appear -->
+  <div id="myCalendar"></div>
+
+  <!-- Include the JS library -->
+  <script src="jocarsa_calendario.js"></script>
+
+  <!-- Initialize the calendar in #myCalendar -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function(){
+      // We pass the id of the container to our library
+      jocarsa_calendario.init("myCalendar");
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="jocarsa_calendario"></div>
+        <script>
+            let jocarsa_calendario = document.querySelector("#jocarsa_calendario");
+            let menu = document.createElement("nav")
+            // Boton diario
+            let boton_diario = document.createElement("button")
+            boton_diario.textContent = "Día";
+            menu.appendChild(boton_diario)
+            // Boton semana
+            let boton_semanal = document.createElement("button")
+            boton_semanal.textContent = "Semana";
+            menu.appendChild(boton_semanal)
+            jocarsa_calendario.appendChild(menu);
+        </script>
+    </body>

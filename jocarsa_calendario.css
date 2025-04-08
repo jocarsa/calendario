@@ -1,0 +1,119 @@
+/* Namespace your CSS by prefixing with .jocarsa_calendario or #jocarsa_calendario
+   so as not to conflict with other styles */
+
+.jocarsa_calendario {
+  font-family: sans-serif;
+}
+
+.jocarsa_calendario nav button {
+  font-size: 10px;
+  color: white;
+  background: blue;
+  border: 0px;
+  padding: 10px;
+  margin: 3px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  min-width: 50px;
+  cursor: pointer;
+}
+
+/* Common styling for daily / weekly / monthly / yearly containers */
+.jocarsa_calendario .calendar-container h4 {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* DAILY VIEW */
+.jocarsa_calendario .diario div {
+  font-size: 10px;
+  padding: 5px;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  gap: 20px;
+}
+
+.jocarsa_calendario .diario input {
+  border: 0px solid white;
+  width: 100%;
+  outline: none;
+}
+
+/* WEEKLY VIEW */
+.jocarsa_calendario .semanal {
+  display: flex;
+  gap: 10px;
+}
+
+.jocarsa_calendario .semanal .dia {
+  min-width: 150px;
+  border: 1px solid lightgrey;
+  margin-bottom: 10px;
+}
+
+.jocarsa_calendario .semanal .dia h4 {
+  text-align: center;
+  margin: 0;
+  padding: 5px 0;
+  background: lightblue;
+  border-bottom: 1px solid grey;
+}
+
+.jocarsa_calendario .semanal .dia div {
+  font-size: 10px;
+  padding: 5px;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  gap: 10px;
+}
+
+.jocarsa_calendario .semanal .dia input {
+  border: 0px;
+  outline: none;
+  width: 100%;
+}
+
+/* MONTHLY VIEW */
+.jocarsa_calendario .mensual {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.jocarsa_calendario .mensual .dia-mes {
+  border: 1px solid lightgrey;
+  min-height: 80px;
+  position: relative;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.jocarsa_calendario .mensual .dia-mes .dia-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* YEARLY VIEW */
+.jocarsa_calendario .anual {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.jocarsa_calendario .anual .mes-anual {
+  border: 1px solid lightgrey;
+  padding: 5px;
+}
+
+.jocarsa_calendario .anual .mes-anual h4 {
+  text-align: center;
+  background: lightblue;
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid grey;
+}
+
+/* Make sure the container is distinct */
+.jocarsa_calendario .calendar-container {
+  margin: 10px 0;
+}
